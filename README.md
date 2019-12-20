@@ -30,23 +30,32 @@ Edit this document to include your answers after each question. Make sure to lea
 
 1. Describe the biggest difference between `.forEach` & `.map`.
 
-.maps is a function that is applied to every element on its array and it returns a new array of the same size. It is also a faster command with fewer code than .forEach.It can also store the results it outputs, which is why it is given a new array name.
+.map is a function that is applied to every element on its array and it returns a new array of the same size. It is also a faster command with fewer code than .forEach. It can also store the results it outputs, which is why it is given a new array name.
 
 .forEach on the other hand can manipulate the original array, however the data is not stored anywhere; it is only being executed as an output of the original results.
 
 2. What is the difference between a function and a method?
 
-A function is called by a name and can return data from the objects when called upon.
+A function is called by a name and can return data from the objects when called upon. (if value is primitive (num, string, boolean) it is considered property)
 
-A method is called by a name that is associated with an object. This means that it only only pass data on the object is that being called if we call to it. A method is given a "job" is that it only takes in the object that it is asked to.
+A method is called by a name that is associated with an object. This means that it only only pass data on the object is that being called if we call to it. A method is given a "job" is that it only takes in the object that it is asked to.(if value is a function, we refer to it as a method of object)
 
 3. What is closure?
 
-A closure gives access to an outer function from an inner function. Closures are created when a function is created. 
+A closure gives access to an outer function from an inner function. Closures are created when a function is created.
+
+(exp)
+function init() {
+    var name = "Mozilla"; // name is a local variable created by init
+    function displayName() { // displayName() is the inner function, a closure
+        alert (name); // displayName() uses variable declared in the parent function    
+    }
+    displayName();    
+}
 
 4. Describe the four rules of the 'this' keyword.
 
-1. Window/Global Object Binding: The value of 'this" will be called and take in anything that is in its function
+1. Window/Global Object Binding: The value of 'this" is called in the global scope,and will be in the window/console object.
 
   function sayName(name){
     console.log(this);
@@ -58,10 +67,16 @@ A closure gives access to an outer function from an inner function. Closures are
 
  myObj.sayHello('Ryan');
 
-3. New Binding: When using a constructor function, "this" is this the the moment when the object is made and returned by the constructor function. 
+3. New Binding: When using a constructor function, "this" is the the moment when the object is made and returned by the constructor function. 
+
+const jerry = new CordialPerson('Newman');
+const newman = new CordialPerson('Jerry');
 
 4. Explicit Binding: "this" is defined when we use JavaScript's call or apply method. New functions include .call, .apply.
+
 john.speak.call(newman); newman.speak.apply(john)
+
+https://learn.lambdaschool.com/web1/module/rec0AWuNLezbpit7m/
 
 5. Why do we need super() in an extended class?
 
